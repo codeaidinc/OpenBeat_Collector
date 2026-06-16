@@ -1,0 +1,8 @@
+# OpenBeat Collector — open side (collection only)
+# Each dependency has a fallback so things still work if it is missing, but
+# installing all of them enables full operation.
+flask>=3.0
+feedparser>=6.0      # RSS/Atom parsing (core of collection)
+trafilatura>=1.6     # main-text extraction (ads/nav removed); falls back to simple HTML stripping if absent
+httpx>=0.27          # HTTP fetch; falls back to the stdlib urllib if absent
+PyYAML>=6.0          # registry loading; falls back to the built-in mini parser if absent

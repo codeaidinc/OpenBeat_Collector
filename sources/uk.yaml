@@ -1,0 +1,72 @@
+# OpenBeat Collector — Source Registry (United Kingdom)
+# A registry for routine monitoring (country x source type). A community asset anyone can extend via PR.
+# fetch_method: rss | html | api | manual
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: UK
+language_default: en
+sources:
+  - id: uk-govuk-news
+    name: GOV.UK — News and communications
+    source_type: government
+    url: https://www.gov.uk/search/news-and-communications.atom
+    site: https://www.gov.uk/government/news
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Open Government Licence v3.0 (summary + source link only)"
+    trust: high
+
+  - id: uk-dbt
+    name: Department for Business and Trade — Announcements
+    source_type: ministry
+    url: https://www.gov.uk/government/organisations/department-for-business-and-trade.atom
+    site: https://www.gov.uk/government/organisations/department-for-business-and-trade
+    lang: en
+    fetch_method: rss
+    update_freq: weekly
+    license_note: "Open Government Licence v3.0"
+    trust: high
+
+  - id: uk-boe-news
+    name: Bank of England — News
+    source_type: government
+    url: https://www.bankofengland.co.uk/rss/news
+    site: https://www.bankofengland.co.uk/news
+    lang: en
+    fetch_method: rss
+    update_freq: weekly
+    license_note: "Comply with terms of use; summary + source link only"
+    trust: high
+
+  - id: uk-bbc-business
+    name: BBC News — Business
+    source_type: media
+    url: https://feeds.bbci.co.uk/news/business/rss.xml
+    site: https://www.bbc.co.uk/news/business
+    lang: en
+    fetch_method: rss
+    update_freq: hourly
+    license_note: "Headline + summary + source link only. No full-text reproduction."
+    trust: medium
+
+  - id: uk-fsb-news
+    name: Federation of Small Businesses (FSB) — News
+    source_type: sme_media
+    url: https://www.fsb.org.uk/media-centre.html
+    site: https://www.fsb.org.uk/media-centre.html
+    lang: en
+    fetch_method: manual
+    update_freq: weekly
+    license_note: "Disallowed by robots.txt, so manual paste (summary + source link only)."
+    trust: medium
+
+  - id: uk-ons-stats
+    name: Office for National Statistics — Releases
+    source_type: statistics
+    url: https://www.ons.gov.uk/releasecalendar?rss
+    site: https://www.ons.gov.uk
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Open Government Licence v3.0"
+    trust: high

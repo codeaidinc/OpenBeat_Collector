@@ -1,0 +1,29 @@
+# Beat Pack manifest — see ../SCHEMA.md
+schema: rwt.pack
+spec_version: "1.0"
+id: food-agriculture
+name: Food & Agriculture
+name_ja: 食品・食料
+domain: 食品・食料ジャーナリズム（food safety / agriculture / food industry）
+description: >-
+  Routine monitoring for food & agriculture journalists: food-safety
+  authorities, agriculture ministry, consumer/recall information, and
+  international food bodies.
+description_ja: >-
+  食品・食料ジャーナリスト向けの定点観測パック。食品安全行政、農業政策、
+  消費者・リコール情報、国際食料機関の公開情報を出典付きで収集します。
+version: "1.0.0"
+languages: [ja, en]
+license: CC-BY-4.0
+trust_tier: verified
+maintainer: "JASTJ pilot (curated) — replace with pack owner"
+created: "2026-06-12"
+updated: "2026-06-12"
+source_count: 6
+provides:
+  theme: theme.yaml
+  sources: sources.yaml
+  tags: null
+notes: >-
+  Feeds verified 2026-06. MAFF legacy RSS is frozen (2016) — use the HTML press
+  list. FAO feed can lag the HTML newsroom by weeks. Re-run `cli.py verify`.

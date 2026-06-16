@@ -1,0 +1,47 @@
+# Theme: Middle East situation (the initial theme)
+# Purpose: simple search keywords (en/fr/ja) to narrow collection to Middle East-related articles.
+# Note: this is NOT a classification tag (closed side, section 4.4) but a naive
+#       text-match filter on the collection side. Some misses/over-collection are
+#       expected. Fine-grained classification is handled by the closed layer.
+# The Japanese/French keywords are kept on purpose so the filter also matches
+# Japanese- and French-language sources.
+id: middle-east
+name: Middle East
+keywords:
+  - Middle East
+  - Gaza
+  - Israel
+  - Iran
+  - Hormuz
+  - Strait of Hormuz
+  - Red Sea
+  - Houthi
+  - Suez
+  - oil price
+  - crude oil
+  - energy price
+  - shipping
+  - freight
+  - supply chain
+  - sanction
+  - Moyen-Orient
+  - mer Rouge
+  - pétrole
+  - chaîne d'approvisionnement
+  - 中東
+  - イスラエル
+  - イラン
+  - ガザ
+  - ホルムズ
+  - 紅海
+  - スエズ
+  - 原油
+  - 原油価格
+  - エネルギー価格
+  - 燃料
+  - 海運
+  - 運賃
+  - サプライチェーン
+  - 供給網
+  - 調達
+  - 制裁

@@ -1,0 +1,28 @@
+# Beat Pack manifest — see ../SCHEMA.md
+schema: rwt.pack
+spec_version: "1.0"
+id: climate-energy
+name: Climate & Energy
+name_ja: 気候・エネルギー
+domain: 気候・エネルギージャーナリズム（climate / environment / energy）
+description: >-
+  Routine monitoring for climate & energy journalists: environment ministry,
+  energy agency, meteorological agency, and international bodies (IPCC, IEA).
+description_ja: >-
+  気候・エネルギージャーナリスト向けの定点観測パック。環境行政、エネルギー政策、
+  気象、国際機関（IPCC・IEA）の公開情報を出典付きで収集します。
+version: "1.0.0"
+languages: [ja, en]
+license: CC-BY-4.0
+trust_tier: verified
+maintainer: "JASTJ pilot (curated) — replace with pack owner"
+created: "2026-06-12"
+updated: "2026-06-12"
+source_count: 6
+provides:
+  theme: theme.yaml
+  sources: sources.yaml
+  tags: null
+notes: >-
+  Feeds verified 2026-06. MOE/ENECHO/JMA/IEA have no public news RSS (HTML
+  lists); IPCC and METI provide feeds. Re-run `cli.py verify` after install.

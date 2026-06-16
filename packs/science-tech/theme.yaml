@@ -1,0 +1,48 @@
+# Theme: Science & Technology (collection-side keyword filter; not a classification tag)
+# Same format as themes/middle-east.yaml. Multilingual on purpose so the filter
+# matches Japanese and English sources alike.
+id: science-tech
+name: Science & Technology
+keywords:
+  # English
+  - research
+  - science
+  - scientific
+  - technology
+  - innovation
+  - artificial intelligence
+  - AI
+  - semiconductor
+  - quantum
+  - space
+  - biotechnology
+  - genome
+  - clinical trial
+  - research integrity
+  - misconduct
+  - paper retraction
+  - patent
+  - R&D
+  - university
+  - Nobel
+  # 日本語
+  - 研究
+  - 科学
+  - 技術
+  - 科学技術
+  - イノベーション
+  - 人工知能
+  - 半導体
+  - 量子
+  - 宇宙
+  - バイオ
+  - ゲノム
+  - 治験
+  - 研究公正
+  - 研究不正
+  - 論文撤回
+  - 特許
+  - 研究開発
+  - 大学
+  - 学術
+  - ノーベル賞

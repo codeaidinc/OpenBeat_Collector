@@ -1,0 +1,42 @@
+# Theme: Health & Public Health (collection-side keyword filter)
+id: health-publichealth
+name: Health & Public Health
+keywords:
+  # English
+  - health
+  - public health
+  - infectious disease
+  - epidemic
+  - pandemic
+  - outbreak
+  - vaccine
+  - vaccination
+  - drug
+  - pharmaceutical
+  - medical device
+  - adverse event
+  - side effect
+  - influenza
+  - measles
+  - antimicrobial resistance
+  - hospital
+  - surveillance
+  # 日本語
+  - 医療
+  - 公衆衛生
+  - 感染症
+  - 流行
+  - パンデミック
+  - 集団感染
+  - ワクチン
+  - 予防接種
+  - 医薬品
+  - 医療機器
+  - 副作用
+  - 副反応
+  - インフルエンザ
+  - 麻疹
+  - 薬剤耐性
+  - 院内感染
+  - 厚生労働
+  - サーベイランス

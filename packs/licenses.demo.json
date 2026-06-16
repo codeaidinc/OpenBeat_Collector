@@ -1,0 +1,39 @@
+{
+  "_comment": "DEMO license keys for offline testing / development ONLY. In production the app verifies keys against the store's license_endpoint (e.g. WooCommerce). Do NOT host this file publicly on the real store; it is bundled only so the licence flow can be demonstrated without a live server. tier: free|pro. packs: entitled pack ids.",
+  "DEMO-FOOD-2026": {
+    "tier": "free",
+    "packs": [
+      "food-agriculture"
+    ]
+  },
+  "DEMO-HEALTH-2026": {
+    "tier": "free",
+    "packs": [
+      "health-publichealth"
+    ]
+  },
+  "DEMO-PRO-2026": {
+    "tier": "pro",
+    "packs": [
+      "food-agriculture",
+      "health-publichealth",
+      "climate-energy"
+    ]
+  },
+  "DEMO-ALL-2026": {
+    "tier": "pro",
+    "packs": [
+      "science-tech",
+      "food-agriculture",
+      "health-publichealth",
+      "climate-energy",
+      "crisis-response"
+    ]
+  },
+  "DEMO-CRISIS-2026": {
+    "tier": "free",
+    "packs": [
+      "crisis-response"
+    ]
+  }
+}

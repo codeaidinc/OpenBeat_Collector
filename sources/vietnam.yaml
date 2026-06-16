@@ -1,0 +1,40 @@
+# OpenBeat Collector — Source Registry (Vietnam)
+# fetch_method: rss | html | api | manual
+# source_type: government | ministry | media | sme_media | support_org | statistics
+# Note: English-language government feeds are scarce for Vietnam; the strongest
+# verified English feeds are business media (incl. the state news agency's Viet Nam News).
+country: Vietnam
+language_default: en
+sources:
+  - id: vn-vnexpress-biz
+    name: VnExpress International — Business
+    source_type: media
+    url: https://e.vnexpress.net/rss/business.rss
+    site: https://e.vnexpress.net/
+    lang: en
+    fetch_method: rss
+    update_freq: hourly
+    license_note: "VnExpress; free for individuals & non-profits, attribution; provider may revoke"
+    trust: high
+
+  - id: vn-vneconomy-biz
+    name: VnEconomy / Vietnam Economic Times — Business
+    source_type: media
+    url: https://en.vneconomy.vn/business.rss
+    site: https://en.vneconomy.vn/
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "VnEconomy; free for individuals & non-profit, attribution; provider may revoke"
+    trust: high
+
+  - id: vn-vietnamnews-economy
+    name: Viet Nam News — Economy (Vietnam News Agency, state)
+    source_type: media
+    url: https://vietnamnews.vn/rss/economy.rss
+    site: https://vietnamnews.vn/
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Vietnam News Agency; RSS free for personal & non-profit use (derive title from article page)"
+    trust: high

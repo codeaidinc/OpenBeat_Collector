@@ -1,0 +1,72 @@
+# OpenBeat Collector — Source Registry (France)
+# A registry for routine monitoring (country x source type). A community asset anyone can extend via PR.
+# fetch_method: rss | html | api | manual
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: France
+language_default: fr
+sources:
+  - id: fr-economie-gouv
+    name: Ministère de l'Économie — Actualités
+    source_type: ministry
+    url: https://www.economie.gouv.fr/rss/toutesactualites
+    site: https://www.economie.gouv.fr/actualites
+    lang: fr
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Licence Ouverte / Etalab. Summary + source link only."
+    trust: high
+
+  - id: fr-bpifrance
+    name: Bpifrance — Actualités (support org)
+    source_type: support_org
+    url: https://www.bpifrance.fr/nos-actualites
+    site: https://www.bpifrance.fr/nos-actualites
+    lang: fr
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Within HTML-allowed bounds. Manual paste if unfetchable."
+    trust: high
+
+  - id: fr-insee
+    name: INSEE — Statistiques / Informations rapides
+    source_type: statistics
+    url: https://www.insee.fr/fr/information/rss
+    site: https://www.insee.fr
+    lang: fr
+    fetch_method: manual
+    update_freq: daily
+    license_note: "Licence Ouverte/Etalab. RSS URL not confirmed, so manual paste; paste the latest from site."
+    trust: high
+
+  - id: fr-cpme
+    name: CPME — Confédération des PME (SME association)
+    source_type: support_org
+    url: https://www.cpme.fr/actualites
+    site: https://www.cpme.fr/actualites
+    lang: fr
+    fetch_method: manual
+    update_freq: weekly
+    license_note: "Summary + source only. Bots rejected with 403 (no public RSS), so manual paste."
+    trust: medium
+
+  - id: fr-lesechos-pme
+    name: Les Echos — Entrepreneurs / PME
+    source_type: sme_media
+    url: https://services.lesechos.fr/rss/les-echos-entrepreneurs.xml
+    site: https://www.lesechos.fr/pme-regions
+    lang: fr
+    fetch_method: manual
+    update_freq: daily
+    license_note: "Headline + source only. Bots rejected with 403, so manual paste (no paywalled content)."
+    trust: medium
+
+  - id: fr-banque-france
+    name: Banque de France — Communiqués
+    source_type: government
+    url: https://www.banque-france.fr/fr/rss.xml
+    site: https://www.banque-france.fr
+    lang: fr
+    fetch_method: manual
+    update_freq: weekly
+    license_note: "Summary + source only. Bots rejected with 403, so manual paste."
+    trust: high

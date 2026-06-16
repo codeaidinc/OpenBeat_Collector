@@ -1,0 +1,61 @@
+# Source Registry — Global Crisis / Rapid Response (EMERGENCY pack)
+# Authoritative global crisis sources. Verify feeds with `cli.py verify`.
+# fetch_method: rss | html | api | manual | dataset
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: International
+language_default: en
+sources:
+  - id: crisis-who
+    name: WHO (World Health Organization) — News
+    source_type: government
+    url: https://www.who.int/rss-feeds/news-english.xml
+    site: https://www.who.int/news
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "UN agency. Summary + source link only."
+    trust: high
+
+  - id: crisis-reliefweb
+    name: ReliefWeb (UN OCHA) — Updates
+    source_type: support_org
+    url: https://reliefweb.int/updates/rss.xml
+    site: https://reliefweb.int/updates
+    lang: en
+    fetch_method: rss
+    update_freq: hourly
+    license_note: "UN OCHA humanitarian information. Summary + source link only."
+    trust: high
+
+  - id: crisis-un-news
+    name: UN News — All
+    source_type: government
+    url: https://news.un.org/feed/subscribe/en/news/all/rss.xml
+    site: https://news.un.org/
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "United Nations news. Summary + source link only."
+    trust: high
+
+  - id: crisis-gdacs
+    name: GDACS — Global Disaster Alert and Coordination System
+    source_type: statistics
+    url: https://www.gdacs.org/xml/rss.xml
+    site: https://www.gdacs.org/
+    lang: en
+    fetch_method: rss
+    update_freq: hourly
+    license_note: "Disaster alerts (EU/UN). Summary + source link only."
+    trust: high
+
+  - id: crisis-ifrc
+    name: IFRC (Red Cross / Red Crescent) — News
+    source_type: support_org
+    url: https://www.ifrc.org/rss.xml
+    site: https://www.ifrc.org/press-releases/all
+    lang: en
+    fetch_method: rss
+    update_freq: weekly
+    license_note: "Humanitarian organization. Site-wide RSS (HTML pages block bots with 403); theme keywords narrow to crisis items. If the feed is also blocked, switch fetch_method to manual."
+    trust: high

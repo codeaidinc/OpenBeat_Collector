@@ -1,0 +1,39 @@
+# Beat Pack manifest — see ../SCHEMA.md
+schema: rwt.pack
+spec_version: "1.0"
+id: middle-east-impact
+type: beat                 # beat | emergency
+name: Middle East Impact (SME)
+name_ja: 中東情勢の影響（中小企業）
+domain: Geopolitics x SMEs — how the Middle East situation affects small businesses (energy, supply chain, prices)
+domain_ja: 地政学×中小企業（中東情勢が中小企業に与える影響：エネルギー・サプライチェーン・価格）
+description: >-
+  Routine monitoring of public information on how the Middle East situation
+  affects small and mid-sized businesses: energy (crude / LNG / fuel),
+  maritime logistics (Hormuz / Red Sea / Suez), supply chain & procurement,
+  and price / inflation pass-through. Sources are official ministries,
+  international bodies, and major media — collected with provenance for
+  neutral, source-cited reporting.
+description_ja: >-
+  中東情勢が中小企業に与える「影響」を、公開情報から出典付きで定点観測するパック。
+  エネルギー（原油・LNG・燃料）、海上物流（ホルムズ・紅海・スエズ）、サプライチェーン・調達、
+  価格・インフレ（コスト転嫁・為替）を主軸に、省庁・国際機関・主要メディアの公開情報を
+  来歴付きで収集します。中立・出典付きの報道を支えます。
+version: "1.0.0"
+languages: [ja, en]
+license: CC-BY-4.0
+trust_tier: community     # community | verified | federation-certified
+maintainer: "OpenBeat reference media (curated) — replace with pack owner"
+created: "2026-06-16"
+updated: "2026-06-16"
+source_count: 8
+provides:
+  theme: theme.yaml
+  sources: sources.yaml
+  tags: null              # closed-layer (paid) classification add-on; not shipped in the open pack
+notes: >-
+  Reference-media pilot pack (open / free). Feeds reuse registry sources verified
+  2026-06 (METI atom, JETRO, BBC Business, ReliefWeb confirmed working; ENECHO /
+  IEA / BOJ CGPI are HTML; SME Agency RSS). Run `cli.py verify` after install and
+  switch any blocked feed to manual. Theme is a naive collection-side keyword
+  filter; fine-grained classification is the closed layer's job.

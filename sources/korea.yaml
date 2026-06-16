@@ -1,0 +1,60 @@
+# OpenBeat Collector — Source Registry (South Korea)
+# fetch_method: rss | html | api | manual
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: South Korea
+language_default: en
+sources:
+  - id: kr-govt-news-business
+    name: "Korea.net (KOCIS) — News Focus: Business"
+    source_type: government
+    url: https://www.korea.net/koreanet/rss/news/4
+    site: https://www.korea.net/NewsFocus/Business
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Headline + summary + source link only; (c) KOCIS"
+    trust: high
+
+  - id: kr-motie
+    name: Ministry of Trade, Industry and Energy (MOTIE) — Press Releases (English)
+    source_type: ministry
+    url: https://english.motie.go.kr/en/pc/pressreleases/bbs/bbsList.do?bbs_cd_n=2
+    site: https://english.motie.go.kr/eng/
+    lang: en
+    fetch_method: manual
+    update_freq: weekly
+    license_note: "Government public release; bot/JS gated, so manual paste (summary + source link)."
+    trust: high
+
+  - id: kr-bok
+    name: Bank of Korea — Press Releases (English)
+    source_type: government
+    url: https://www.bok.or.kr/eng/singl/newsDataEng/list.do?menuNo=400423
+    site: https://www.bok.or.kr/eng/main/main.do
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Headline + source link; (c) Bank of Korea"
+    trust: high
+
+  - id: kr-koreaherald-business
+    name: The Korea Herald — Business
+    source_type: media
+    url: https://www.koreaherald.com/rss/kh_Business
+    site: https://www.koreaherald.com/Business
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Headline + summary + source link only; (c) Herald Corp"
+    trust: high
+
+  - id: kr-yonhap
+    name: Yonhap News Agency (English)
+    source_type: media
+    url: https://en.yna.co.kr/RSS/news.xml
+    site: https://en.yna.co.kr/
+    lang: en
+    fetch_method: rss
+    update_freq: hourly
+    license_note: "Headline + source link only (wire service; strict reuse limits)."
+    trust: high

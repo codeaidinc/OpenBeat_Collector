@@ -1,0 +1,49 @@
+# OpenBeat Collector — Source Registry (Thailand)
+# fetch_method: rss | html | api | manual
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: Thailand
+language_default: en
+sources:
+  - id: th-bangkokpost-biz
+    name: Bangkok Post — Business
+    source_type: media
+    url: https://www.bangkokpost.com/rss/data/business.xml
+    site: https://www.bangkokpost.com/business
+    lang: en
+    fetch_method: rss
+    update_freq: hourly
+    license_note: "Bangkok Post official RSS; headline + short summary + link back; reuse per policy"
+    trust: high
+
+  - id: th-nationthailand-biz
+    name: The Nation Thailand — Business
+    source_type: media
+    url: https://www.nationthailand.com/business
+    site: https://www.nationthailand.com/
+    lang: en
+    fetch_method: html
+    update_freq: daily
+    license_note: "The Nation (Nation Group), all rights reserved; headline + source link"
+    trust: high
+
+  - id: th-bot
+    name: Bank of Thailand (BOT) — News
+    source_type: government
+    url: https://www.bot.or.th/en/news-and-media/news.html
+    site: https://www.bot.or.th/
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Bank of Thailand terms & conditions (BOT also offers an open data API)"
+    trust: high
+
+  - id: th-boi
+    name: Thailand Board of Investment (BOI) — News
+    source_type: government
+    url: https://www.boi.go.th/en/index/
+    site: https://www.boi.go.th/en/
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Thailand BOI / Royal Thai Government"
+    trust: high

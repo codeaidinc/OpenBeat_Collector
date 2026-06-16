@@ -1,0 +1,42 @@
+# Theme: Food & Agriculture (collection-side keyword filter)
+id: food-agriculture
+name: Food & Agriculture
+keywords:
+  # English
+  - food safety
+  - food
+  - agriculture
+  - fishery
+  - livestock
+  - food additive
+  - pesticide residue
+  - food poisoning
+  - foodborne
+  - recall
+  - food labeling
+  - import
+  - avian influenza
+  - food security
+  - supply
+  - harvest
+  - Codex
+  # 日本語
+  - 食品
+  - 食料
+  - 食品安全
+  - 農業
+  - 漁業
+  - 畜産
+  - 食品添加物
+  - 残留農薬
+  - 食中毒
+  - リコール
+  - 回収
+  - 食品表示
+  - 輸入
+  - 鳥インフルエンザ
+  - 食料安全保障
+  - 供給
+  - 産地
+  - 農薬
+  - 遺伝子組換え

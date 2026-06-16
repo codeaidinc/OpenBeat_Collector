@@ -1,0 +1,60 @@
+# OpenBeat Collector — Source Registry (Singapore)
+# fetch_method: rss | html | api | manual
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: Singapore
+language_default: en
+sources:
+  - id: sg-straitstimes-biz
+    name: The Straits Times — Business
+    source_type: media
+    url: https://www.straitstimes.com/news/business/rss.xml
+    site: https://www.straitstimes.com/business
+    lang: en
+    fetch_method: rss
+    update_freq: hourly
+    license_note: "SPH Media; headline + summary + source link, personal/non-commercial reuse"
+    trust: high
+
+  - id: sg-mti
+    name: Ministry of Trade and Industry (MTI) — Newsroom
+    source_type: ministry
+    url: https://www.mti.gov.sg/newsroom/
+    site: https://www.mti.gov.sg/
+    lang: en
+    fetch_method: html
+    update_freq: daily
+    license_note: "Singapore Government / Open Government Licence"
+    trust: high
+
+  - id: sg-enterprisesg
+    name: Enterprise Singapore — Media Centre
+    source_type: support_org
+    url: https://www.enterprisesg.gov.sg/resources/media-centre
+    site: https://www.enterprisesg.gov.sg/
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Singapore Government / Open Government Licence"
+    trust: high
+
+  - id: sg-mas
+    name: Monetary Authority of Singapore (MAS) — News
+    source_type: government
+    url: https://www.mas.gov.sg/news
+    site: https://www.mas.gov.sg/
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Singapore Government / Open Government Licence"
+    trust: high
+
+  - id: sg-singstat
+    name: Singapore Department of Statistics (SingStat) — Latest News
+    source_type: statistics
+    url: https://www.singstat.gov.sg/whats-new/latest-news
+    site: https://www.singstat.gov.sg/
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Singapore Government / Open Government Licence (RSS exists but CloudFront blocks non-browser fetchers)"
+    trust: high

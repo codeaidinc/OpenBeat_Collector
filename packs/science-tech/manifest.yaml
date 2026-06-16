@@ -1,0 +1,29 @@
+# Beat Pack manifest — see ../SCHEMA.md
+schema: rwt.pack
+spec_version: "1.0"
+id: science-tech
+name: Science & Technology
+name_ja: 科学・技術
+domain: 科学技術ジャーナリズム（research / science / tech policy）
+description: >-
+  Routine monitoring of public information for science & technology
+  journalists: ministry releases, research-funding agencies, and major
+  science media (domestic + international).
+description_ja: >-
+  科学技術ジャーナリスト向けの定点観測パック。省庁の報道発表、研究助成機関、
+  主要科学メディア（国内＋国際）の公開情報を出典付きで収集します。
+version: "1.0.0"
+languages: [ja, en]
+license: CC-BY-4.0
+trust_tier: verified
+maintainer: "JASTJ pilot (curated) — replace with pack owner"
+created: "2026-06-12"
+updated: "2026-06-12"
+source_count: 6
+provides:
+  theme: theme.yaml
+  sources: sources.yaml
+  tags: null   # closed-layer (paid) classification add-on; not shipped in the open pack
+notes: >-
+  Feeds verified 2026-06. NHK category RSS and Science/AAAS may be blocked in
+  some environments (set as manual). Re-run `cli.py verify` after install.

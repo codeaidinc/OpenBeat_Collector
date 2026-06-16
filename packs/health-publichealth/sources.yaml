@@ -1,0 +1,72 @@
+# Source Registry — Health & Public Health pack
+# fetch_method: rss | html | api | manual | dataset
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: Japan
+language_default: ja
+sources:
+  - id: health-jp-mhlw
+    name: MHLW (Ministry of Health, Labour and Welfare) — News
+    source_type: ministry
+    url: https://www.mhlw.go.jp/stf/news.rdf
+    site: https://www.mhlw.go.jp/stf/houdou/index.html
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. Summary + source link only."
+    trust: high
+
+  - id: health-jp-mhlw-kinkyu
+    name: MHLW — Emergency information
+    source_type: ministry
+    url: https://www.mhlw.go.jp/stf/kinkyu.rdf
+    site: https://www.mhlw.go.jp/stf/houdou/index.html
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. Summary + source link only."
+    trust: high
+
+  - id: health-jp-jihs
+    name: JIHS (Japan Institute for Health Security) — Infectious disease updates (former NIID)
+    source_type: government
+    url: https://id-info.jihs.go.jp/updates.html
+    site: https://id-info.jihs.go.jp/
+    lang: ja
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Japan Government Standard Terms of Use. No RSS; summary + source link only."
+    trust: high
+
+  - id: health-jp-jihs-idwr
+    name: JIHS — IDWR infectious-disease weekly surveillance
+    source_type: statistics
+    url: https://id-info.jihs.go.jp/surveillance/idwr/index.html
+    site: https://id-info.jihs.go.jp/surveillance/idwr/index.html
+    lang: ja
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Surveillance data. Summary + source link only (figures detailed in linked reports)."
+    trust: high
+
+  - id: health-int-who
+    name: WHO (World Health Organization) — News
+    country: International
+    source_type: government
+    url: https://www.who.int/rss-feeds/news-english.xml
+    site: https://www.who.int/news
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "UN agency. Summary + source link only."
+    trust: high
+
+  - id: health-jp-pmda
+    name: PMDA (Pharmaceuticals and Medical Devices Agency) — Drug safety information
+    source_type: support_org
+    url: https://www.pmda.go.jp/safety/info-services/drugs/0001.html
+    site: https://www.pmda.go.jp/
+    lang: ja
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Within HTML-allowed bounds. Manual paste if unfetchable."
+    trust: high

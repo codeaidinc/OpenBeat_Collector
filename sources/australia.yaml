@@ -1,0 +1,60 @@
+# OpenBeat Collector — Source Registry (Australia)
+# fetch_method: rss | html | api | manual
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: Australia
+language_default: en
+sources:
+  - id: au-rba-media-releases
+    name: Reserve Bank of Australia (RBA) — Media Releases
+    source_type: government
+    url: https://www.rba.gov.au/rss/rss-cb-media-releases.xml
+    site: https://www.rba.gov.au/media-releases/
+    lang: en
+    fetch_method: rss
+    update_freq: weekly
+    license_note: "(c) RBA; reuse per RBA Copyright & Disclaimer notice"
+    trust: high
+
+  - id: au-dfat-news
+    name: Department of Foreign Affairs and Trade (DFAT) — News
+    source_type: ministry
+    url: https://www.dfat.gov.au/news
+    site: https://www.dfat.gov.au/
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Commonwealth content, generally CC BY 4.0 (confirm per page)"
+    trust: high
+
+  - id: au-austrade-news
+    name: Australian Trade and Investment Commission (Austrade) — News
+    source_type: ministry
+    url: https://www.austrade.gov.au/en/news-and-analysis/news
+    site: https://www.austrade.gov.au/
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Commonwealth content, generally CC BY 4.0 (confirm per page)"
+    trust: high
+
+  - id: au-abs-media-releases
+    name: Australian Bureau of Statistics (ABS) — Media Releases
+    source_type: statistics
+    url: https://www.abs.gov.au/media-centre/media-releases
+    site: https://www.abs.gov.au/
+    lang: en
+    fetch_method: html
+    update_freq: daily
+    license_note: "ABS data CC BY 4.0"
+    trust: high
+
+  - id: au-asbfeo-news
+    name: Australian Small Business and Family Enterprise Ombudsman (ASBFEO) — News & Media
+    source_type: support_org
+    url: https://www.asbfeo.gov.au/news-and-media
+    site: https://www.asbfeo.gov.au/
+    lang: en
+    fetch_method: manual
+    update_freq: weekly
+    license_note: "JS-rendered SPA; manual paste (summary + source link). Content CC BY 4.0 (confirm)."
+    trust: high

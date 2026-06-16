@@ -1,0 +1,5 @@
+# OpenBeat Collector - source-request form (opened by "Open the request page").
+# The first non-comment line below is used. {site}/{detail} are auto-filled if present.
+# To auto-fill the Site field, replace this with a Google Forms pre-filled URL:
+#   https://docs.google.com/forms/d/e/XXXX/viewform?usp=pp_url&entry.123456={site}
+https://forms.gle/isMmNXiMyto6th4m9

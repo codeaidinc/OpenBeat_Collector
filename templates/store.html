@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ s.store_title }} — OpenBeat Collector</title>
+<style>
+  :root { --ink:#1e293b; --muted:#64748b; --line:#e2e8f0; --accent:#1f4e79; --accent2:#2e5496; --bg:#f8fafc; --paid:#b45309; --free:#15803d; }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", "Yu Gothic", Meiryo, sans-serif; color: var(--ink); margin: 0; background: var(--bg); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 64px; }
+  a { color: var(--accent2); }
+  .top { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+  h1 { font-size: 1.5rem; margin: 8px 0; color: var(--accent); }
+  .intro { color: var(--muted); margin: 4px 0 18px; line-height: 1.6; }
+  .bar { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:18px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center; }
+  .plan { font-weight:700; }
+  .pill { display:inline-block; font-size:.72rem; font-weight:700; padding:2px 8px; border-radius:999px; vertical-align:middle; }
+  .pill.free { background:#dcfce7; color:var(--free); }
+  .pill.paid { background:#fef3c7; color:var(--paid); }
+  .pill.pro { background:#e0e7ff; color:#3730a3; }
+  .pill.owned { background:#e2e8f0; color:#334155; }
+  .pill.active { background:#1f4e79; color:#fff; }
+  .pill.verified { background:#eff6ff; color:#1d4ed8; }
+  .muted { color: var(--muted); }
+  .flash { background:#fffbeb; border:1px solid #fde68a; color:#92400e; padding:10px 14px; border-radius:10px; margin:8px 0; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap:16px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; display:flex; flex-direction:column; }
+  .card.on { border-color:#1f4e79; box-shadow:0 0 0 2px rgba(31,78,121,.12); }
+  .card h3 { margin:2px 0 2px; font-size:1.08rem; }
+  .domain { font-size:.8rem; color:var(--muted); margin-bottom:8px; }
+  .desc { font-size:.9rem; line-height:1.55; flex:1; }
+  .meta { font-size:.78rem; color:var(--muted); margin:10px 0 12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .price { font-weight:700; }
+  .price.free { color:var(--free); } .price.paid { color:var(--paid); }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; }
+  button, .btn { font:inherit; border:0; border-radius:9px; padding:9px 14px; cursor:pointer; font-weight:600; text-decoration:none; display:inline-block; }
+  .primary { background:var(--accent); color:#fff; }
+  .ghost { background:#eef2f7; color:#334155; }
+  .buy { background:#b45309; color:#fff; }
+  .lic { background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px; margin:18px 0; }
+  .lic input[type=text]{ font:inherit; padding:9px 10px; border:1px solid #cbd5e1; border-radius:8px; min-width:260px; }
+  .pro-box { background:#eef2ff; border:1px solid #c7d2fe; border-radius:12px; padding:16px; margin-top:18px; }
+  form.inline { display:inline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div>
+      <h1>📦 {{ s.store_title }}{% if store.name_ja and lang=='ja' %} <span class="muted" style="font-size:.9rem">— {{ store.name_ja }}</span>{% elif store.name_en %} <span class="muted" style="font-size:.9rem">— {{ store.name_en }}</span>{% endif %}</h1>
+    </div>
+    <a href="{{ url_for('index') }}">{{ s.back_to_collect }}</a>
+  </div>
+  <p class="intro">{{ s.store_intro }}</p>
+
+  {% with msgs = get_flashed_messages() %}
+    {% if msgs %}{% for m in msgs %}<div class="flash">{{ m }}</div>{% endfor %}{% endif %}
+  {% endwith %}
+
+  <div class="bar">
+    <div>
+      <span class="plan">{{ s.tier_label }}:
+        {% if summary.tier=='pro' %}<span class="pill pro">{{ s.tier_pro }}</span>{% else %}<span class="pill free">{{ s.tier_free }}</span>{% endif %}
+      </span>
+      <span class="muted">　{% if summary.tier=='pro' %}{{ s.tier_pro_note }}{% else %}{{ s.tier_free_note }}{% endif %}</span>
+    </div>
+    <div class="muted">
+      {% if summary.active_limit %}{{ s.active_count_limited.format(n=summary.active|length, limit=summary.active_limit) }}{% else %}{{ s.active_count.format(n=summary.active|length) }}{% endif %}
+      <form class="inline" method="post" action="{{ url_for('store.store_refresh') }}"><button class="ghost" type="submit" style="margin-left:10px;padding:6px 10px;font-size:.8rem">{{ s.refresh_btn }}</button></form>
+    </div>
+  </div>
+
+  <!-- License / unlock -->
+  <div class="lic">
+    <strong>🔑 {{ s.license_h }}</strong>
+    <p class="muted" style="margin:6px 0 10px">{{ s.license_note }}</p>
+    {% if summary.has_license %}
+      <p>{{ s.license_have.format(tier=summary.tier, packs=(summary.active|length and '' or '')) }}
+         <span class="pill {{ 'pro' if summary.tier=='pro' else 'owned' }}">{{ summary.tier }}</span></p>
+    {% endif %}
+    <form method="post" action="{{ url_for('store.store_license') }}">
+      <input type="text" name="key" placeholder="{{ s.license_ph }}" value="">
+      <button class="primary" type="submit">{{ s.license_btn }}</button>
+      {% if summary.has_license %}
+        <button class="ghost" type="submit" formaction="{{ url_for('store.store_license_clear') }}">{{ s.license_clear }}</button>
+      {% endif %}
+    </form>
+  </div>
+
+  <!-- Pack catalog -->
+  <div class="grid">
+    {% for c in catalog %}
+    <div class="card {{ 'on' if c.active else '' }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+        <h3>{{ c.name_ja if (lang=='ja' and c.name_ja) else c.name }}</h3>
+        <div>
+          {% if c.paid %}<span class="pill paid">{{ s.paid_badge }}</span>{% else %}<span class="pill free">{{ s.free_badge }}</span>{% endif %}
+        </div>
+      </div>
+      <div class="domain">{{ c.domain_ja if (lang=='ja' and c.domain_ja) else (c.domain_ja or '') }}</div>
+      <div class="desc">{{ c.description_ja if (lang=='ja' and c.description_ja) else c.description_en }}</div>
+      <div class="meta">
+        <span>{{ s.sources_n.format(n=c.source_count) }}</span>
+        {% if c.trust_tier=='verified' %}<span class="pill verified">{{ s.verified }}</span>{% endif %}
+        {% if c.entitled and c.paid %}<span class="pill owned">{{ s.owned_badge }}</span>{% endif %}
+        {% if c.active %}<span class="pill active">{{ s.active_badge }}</span>{% endif %}
+        <span style="flex:1"></span>
+        {% if c.paid %}<span class="price paid">{{ s.price_paid.format(price='{:,}'.format(c.price)) }}</span>{% else %}<span class="price free">{{ s.price_free }}</span>{% endif %}
+      </div>
+      <div class="actions">
+        {% if c.active %}
+          <form method="post" action="{{ url_for('store.store_deactivate') }}"><input type="hidden" name="id" value="{{ c.id }}"><button class="ghost" type="submit">{{ s.btn_deactivate }}</button></form>
+        {% elif c.entitled %}
+          <form method="post" action="{{ url_for('store.store_activate') }}"><input type="hidden" name="id" value="{{ c.id }}">
+            <button class="primary" type="submit">
+              {% if summary.tier=='pro' %}{{ s.btn_add }}{% elif summary.active|length >= 1 %}{{ s.btn_switch }}{% else %}{{ s.btn_use }}{% endif %}
+            </button>
+          </form>
+        {% else %}
+          {% if c.buy_url %}<a class="buy" href="{{ c.buy_url }}" target="_blank" rel="noopener">{{ s.btn_buy }}</a>{% endif %}
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Pro upsell -->
+  {% if store.pro and summary.tier != 'pro' %}
+  <div class="pro-box">
+    <strong>⭐ {{ store.pro.name_ja if (lang=='ja' and store.pro.name_ja) else store.pro.name_en }}</strong>
+    <p style="margin:6px 0 10px">{{ s.pro_upsell }}</p>
+    <p class="muted" style="margin:0 0 12px">{{ store.pro.description_ja if (lang=='ja' and store.pro.description_ja) else store.pro.description_en }}</p>
+    <div class="actions">
+      <span class="price paid" style="align-self:center">{{ s.price_paid.format(price='{:,}'.format(store.pro.price)) }}</span>
+      {% if store.pro.buy_url %}<a class="buy" href="{{ store.pro.buy_url }}" target="_blank" rel="noopener">{{ s.btn_buy }}</a>{% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <p class="muted" style="margin-top:18px;font-size:.85rem">{{ s.buy_pack_note }}</p>
+
+</div>
+</body>
+</html>

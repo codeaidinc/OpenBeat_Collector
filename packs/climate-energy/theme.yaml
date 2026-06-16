@@ -1,0 +1,42 @@
+# Theme: Climate & Energy (collection-side keyword filter)
+id: climate-energy
+name: Climate & Energy
+keywords:
+  # English
+  - climate
+  - climate change
+  - global warming
+  - decarbonization
+  - emissions
+  - carbon
+  - net zero
+  - renewable energy
+  - solar
+  - wind power
+  - nuclear
+  - hydrogen
+  - energy
+  - electricity
+  - power grid
+  - GX
+  - adaptation
+  - extreme weather
+  # 日本語
+  - 気候
+  - 気候変動
+  - 温暖化
+  - 脱炭素
+  - 排出
+  - カーボン
+  - 二酸化炭素
+  - ネットゼロ
+  - 再生可能エネルギー
+  - 太陽光
+  - 風力
+  - 原子力
+  - 水素
+  - エネルギー
+  - 電力
+  - 送電網
+  - 適応
+  - 異常気象

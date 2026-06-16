@@ -1,0 +1,95 @@
+# OpenBeat Collector — Source Registry (Japan)
+# A registry for routine monitoring (country x source type). A community asset anyone can extend via PR.
+# fetch_method: rss | html | api | manual | dataset
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: Japan
+language_default: ja
+sources:
+  - id: jp-chusho
+    name: Japan SME Agency (Chusho Kigyo Cho) — News
+    source_type: ministry
+    url: https://www.chusho.meti.go.jp/rss/index.xml
+    site: https://www.chusho.meti.go.jp/
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. Summary + source link only."
+    trust: high
+
+  - id: jp-meti
+    name: METI (Ministry of Economy, Trade and Industry) — News Releases
+    source_type: ministry
+    url: https://www.meti.go.jp/ml_index_release_atom.xml
+    site: https://www.meti.go.jp/press/index.html
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use"
+    trust: high
+
+  - id: jp-jetro-biznews
+    name: JETRO — Business Brief
+    source_type: support_org
+    url: https://www.jetro.go.jp/rss/biznews.xml
+    site: https://www.jetro.go.jp/biznews/
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Summary + source link only."
+    trust: high
+
+  - id: jp-smrj
+    name: SMRJ (Organization for SME and Regional Innovation) — News
+    source_type: support_org
+    url: https://www.smrj.go.jp/news/index.html
+    site: https://www.smrj.go.jp/news/
+    lang: ja
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Within HTML-allowed bounds. Manual paste if unfetchable."
+    trust: high
+
+  - id: jp-nhk-business
+    name: NHK News — Business
+    source_type: media
+    url: https://www.nhk.or.jp/rss/news/cat5.xml
+    site: https://www3.nhk.or.jp/news/
+    lang: ja
+    fetch_method: rss
+    update_freq: hourly
+    license_note: "Headline + summary + source link only. No full-text reproduction."
+    url_rewrite: 'https://news\.web\.nhk/newsweb/na/na-(k\d+) => https://www3.nhk.or.jp/news/html/\1.html'
+    trust: medium
+
+  - id: jp-stat
+    name: Statistics Bureau of Japan (MIC) — News
+    source_type: statistics
+    url: https://www.stat.go.jp/index.html
+    site: https://www.stat.go.jp/
+    lang: ja
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Japan Government Standard Terms of Use"
+    trust: high
+
+  - id: jp-boj-cgpi
+    name: Bank of Japan — Corporate Goods Price Index (CGPI) releases
+    source_type: statistics
+    url: https://www.boj.or.jp/statistics/pi/cgpi_release/index.htm
+    site: https://www.boj.or.jp/statistics/pi/index.htm
+    lang: ja
+    fetch_method: html
+    update_freq: monthly
+    license_note: "Bank of Japan terms of use. Summary + source link only (figures are detailed in the linked monthly PDFs)."
+    trust: high
+
+  - id: jp-jcci-lobo
+    name: JCCI LOBO Survey (SME business conditions; industry-association primary data)
+    source_type: support_org
+    url: https://www.jcci.or.jp/lobo/
+    site: https://www.jcci.or.jp/lobo/
+    lang: ja
+    fetch_method: manual
+    update_freq: monthly
+    license_note: "Industry-association survey. Summary + source link only (manual-paste operation)."
+    trust: high
