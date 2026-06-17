@@ -1,5 +1,5 @@
 # Theme: Science & Technology (collection-side keyword filter; not a classification tag)
-# Same format as themes/middle-east.yaml. Multilingual on purpose so the filter
+# Same format as themes/example.yaml. Multilingual on purpose so the filter
 # matches Japanese and English sources alike.
 id: science-tech
 name: Science & Technology

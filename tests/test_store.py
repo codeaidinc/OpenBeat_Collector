@@ -26,7 +26,7 @@ def _store(tmp_path, http_get=None, index_url=None):
 def test_index_loads_from_bundled(tmp_path):
     ps = _store(tmp_path)
     ids = [p["id"] for p in ps.packs_meta()]
-    assert ids == ["middle-east-impact", "science-tech", "food-agriculture",
+    assert ids == ["science-tech", "food-agriculture",
                    "health-publichealth", "climate-energy", "crisis-response"]
     assert ps.store_info().get("pro")
 

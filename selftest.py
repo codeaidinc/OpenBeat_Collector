@@ -69,7 +69,7 @@ def main():
         os.remove(tmpdb2)
     store2 = Store(tmpdb2)
     res_kw = collect_source(src, is_duplicate=store2.is_duplicate,
-                            keywords=["Middle East", "supply-chain", "supply chain"])
+                            keywords=["energy", "supply-chain", "supply chain"])
     n_kw = store2.add_items(res_kw.items)
     assert 1 <= n_kw < n1, f"theme filter not working: {n_kw} of {n1}"
     print(f"[5] theme filter OK: collected only {n_kw} keyword matches out of {n1}")
@@ -92,8 +92,8 @@ def main():
     print("[8] validation negative control OK: invalid definition correctly detected")
 
     themes = load_themes(os.path.join(HERE, "themes"))
-    assert "middle-east" in themes and len(themes["middle-east"]) >= 10
-    print(f"[9] theme load OK: middle-east ({len(themes['middle-east'])} keywords)")
+    assert "example" in themes and len(themes["example"]) >= 10
+    print(f"[9] theme load OK: example ({len(themes['example'])} keywords)")
 
     from openbeat_collector.collector import _rewrite_url
     nhk = next(x for x in reg if x.id == "jp-nhk-business")

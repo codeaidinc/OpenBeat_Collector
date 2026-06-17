@@ -19,22 +19,6 @@
   },
   "packs": [
     {
-      "id": "middle-east-impact",
-      "name": "Middle East Impact (SME)",
-      "name_ja": "中東情勢の影響（中小企業）",
-      "domain_ja": "地政学×中小企業（中東情勢が中小企業に与える影響：エネルギー・サプライチェーン・価格）",
-      "description_ja": "中東情勢が中小企業に与える「影響」を、公開情報から出典付きで定点観測するリファレンス・メディア向けパック。エネルギー（原油・LNG・燃料）、海上物流（ホルムズ・紅海・スエズ）、サプライチェーン・調達、価格・インフレを主軸に、省庁・国際機関・主要メディア（METI・資源エネ庁・中小企業庁・日銀物価・JETRO・IEA・UN OCHA・BBC）の公開情報を来歴付きで収集。",
-      "description_en": "Reference-media pilot pack on how the Middle East situation affects SMEs: energy, maritime logistics, supply chain, prices. METI, ENECHO, SME Agency, BOJ CGPI, JETRO, IEA, UN/OCHA ReliefWeb, BBC.",
-      "source_count": 8,
-      "version": "1.0.0",
-      "trust_tier": "community",
-      "paid": false,
-      "price": 0,
-      "currency": "JPY",
-      "files_base": "https://packs.jastj.example/packs/middle-east-impact/",
-      "buy_url": null
-    },
-    {
       "id": "science-tech",
       "name": "Science & Technology",
       "name_ja": "科学・技術",

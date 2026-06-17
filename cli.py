@@ -6,7 +6,7 @@ Examples:
   python cli.py validate                       # statically validate the registry (offline)
   python cli.py verify --country Japan          # connect to each feed and diagnose (helps fix URLs)
   python cli.py collect --country Japan         # collect all sources for Japan
-  python cli.py collect --theme middle-east      # collect narrowed to the Middle East theme
+  python cli.py collect --theme example          # collect narrowed to a theme (themes/*.yaml)
   python cli.py list --country France --limit 20
   python cli.py export corpus.json --country Japan
 """
@@ -47,7 +47,7 @@ def _theme_dirs():
     """Bundled themes plus any active beat-pack themes (matches the web app).
 
     Activating a pack writes its theme to data/active_themes/<id>.yaml, so a
-    pack theme (e.g. middle-east-impact) is resolvable by `collect --theme`.
+    pack theme (e.g. a pack's own theme) is resolvable by `collect --theme`.
     """
     dirs = [THEMES_DIR]
     try:
@@ -238,7 +238,7 @@ def main():
     s2.add_argument("--source")
     s2.add_argument("--max", type=int, default=30, help="max items per source")
     s2.add_argument("--full", action="store_true", help="also fetch the full article page (polite/slower)")
-    s2.add_argument("--theme", help="filter by theme (e.g. middle-east)")
+    s2.add_argument("--theme", help="filter by theme (e.g. example)")
     s2.add_argument("--keywords", help="filter by comma-separated keywords")
     s2.set_defaults(func=cmd_collect)
 

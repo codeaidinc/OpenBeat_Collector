@@ -50,7 +50,7 @@ it. `community` packs are user-contributed via PR (same model as `CONTRIBUTING.m
 
 ## Theme & source file formats
 
-- `theme.yaml` — identical to `themes/middle-east.yaml`: `id`, `name`, multilingual `keywords[]`.
+- `theme.yaml` — identical to a bundled theme (e.g. `themes/example.yaml`): `id`, `name`, multilingual `keywords[]`.
 - `sources.yaml` — identical to `sources/japan.yaml`: top-level `country` /
   `language_default`, then `sources[]`. Each source may override `country`
   (e.g. `International`) and uses the standard fields:

@@ -8,7 +8,7 @@ timestamp.
 Usage:
   python run_scheduled.py                        # all sources, all countries
   python run_scheduled.py --country Japan
-  python run_scheduled.py --theme middle-east     # crawl narrowed to the Middle East theme
+  python run_scheduled.py --theme example         # crawl narrowed to a theme
 
 Schedule examples:
   Linux/macOS (daily at 6am):

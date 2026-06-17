@@ -26,7 +26,7 @@
 - `t-rss`（fetch_method=rss, url=file://sample_feed.xml, country=Testland, lang=en）
 - `t-stats`（dataset, url=file://sample_stats.csv, dataset_spec 既知, country=Testland）
 - `t-manual`（manual, country=Testland）
-- 中東テーマ（themes/middle-east.yaml をコピー）
+- サンプルテーマ（themes/example.yaml）
 
 ---
 
@@ -38,12 +38,12 @@
 |---|---|---|---|
 | A1 | `GET /` | 既定 | 200。国タブ（Testland等）、テーマ`select`、情報源チェックリスト（既定 checked）、「保存済み合計」、「✎情報源を管理」リンク描画。既定国=`countries(reg)[0]` |
 | A2 | `GET /?country=Testland` | 国指定 | 200。`sel_country` 反映、その国の源だけ表示、タブが `on` |
-| A3 | `GET /?theme=middle-east` | テーマ指定 | 200。表示が中東キーワードで絞り込み、「Showing theme」注記、export リンクに `theme` 付与 |
+| A3 | `GET /?theme=example` | テーマ指定 | 200。表示がテーマキーワードで絞り込み、「Showing theme」注記、export リンクに `theme` 付与 |
 | A4 | `GET /?full=1` | 全文チェック保持 | 200。「記事本文まで取得」チェックが **checked**（`sel_full` 往復・v1.0.3 修正点） |
 | A5 | `POST /collect`（rss, file://） | 既定収集 | 302 → `/?country=...`。flash「収集完了：新規 N / 重複 0」。再 `GET /` で N 件表示。DB 件数=N |
 | A6 | `POST /collect` 再実行 | 同条件2回目 | 302。flash「新規 0 / 重複 N」。DB 件数不変（dedup） |
 | A7 | `POST /collect` full=on | 全文取得ON（http_get 注入で擬似本文） | 302 で `Location` に `full=1`。要約のみ既存行が**全文でその場更新**（`add_or_update_items(overwrite_by_url=True)`）。flash に「全文更新 M 件」 |
-| A8 | `POST /collect` theme=middle-east | テーマ付き収集 | 302。中東一致のみ収集（< 全件）。flash にテーマ表記 `（テーマ: middle-east）` |
+| A8 | `POST /collect` theme=example | テーマ付き収集 | 302。テーマ一致のみ収集（< 全件）。flash にテーマ表記 `（テーマ: example）` |
 | A9 | `POST /collect` source_ids 部分選択 | 一部源のみ | 302。選択した源のみ収集 |
 | A10 | `POST /manual` 正常 | source_id+url+title+text | 302 → `/?country&theme`。flash「手動アイテムを追加」。DB に1件追加 |
 | A11 | `POST /manual` 不備 | text 空 or 不正 source_id | 302。flash「情報源と本文は必須」。追加なし |

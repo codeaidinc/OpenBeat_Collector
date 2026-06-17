@@ -173,8 +173,8 @@ def test_c4_verify_dataset_ok():
 # C3 — collect_source (keyword filter + dataset adapter)
 # --------------------------------------------------------------------------
 def test_c3_collect_keyword_filter():
-    res = collect_source(_src(url=FEED_URI), keywords=["Middle East"])
-    assert len(res.items) == 1                        # only the ME entry
+    res = collect_source(_src(url=FEED_URI), keywords=["energy"])
+    assert len(res.items) == 1                        # only the energy entry
 
 
 def test_c3_collect_dataset_unique_period_urls():

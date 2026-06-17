@@ -50,13 +50,13 @@ def test_a3_theme_filter_view(make_client):
     # collect first so there is something to filter
     client.post("/collect", data={"country": "Testland", "source_ids": ["t-rss"]},
                 follow_redirects=True)
-    r = client.get("/?country=Testland&theme=middle-east")
+    r = client.get("/?country=Testland&theme=example")
     body = _text(r)
     assert r.status_code == 200
     assert "Showing theme" in body
-    assert "middle-east" in body
+    assert "example" in body
     # export link carries the theme
-    assert "theme=middle-east" in body
+    assert "theme=example" in body
 
 
 def test_a4_full_text_checkbox_preserved(make_client):
@@ -125,11 +125,11 @@ def test_a8_collect_with_theme(make_client):
     client, ctx = make_client(lang="en")
     r = client.post("/collect",
                     data={"country": "Testland", "source_ids": ["t-rss"],
-                          "theme": "middle-east"},
+                          "theme": "example"},
                     follow_redirects=True)
     body = _text(r)
-    assert "theme: middle-east" in body
-    assert "1 new" in body                      # only the Middle-East entry matches
+    assert "theme: example" in body
+    assert "1 new" in body                      # only the energy entry matches
     assert _db_count(ctx, "Testland") == 1
 
 
@@ -200,11 +200,11 @@ def test_a13_export_json_theme(make_client):
     client, ctx = make_client(lang="en")
     client.post("/collect", data={"country": "Testland", "source_ids": ["t-rss"]},
                 follow_redirects=True)
-    r = client.get("/export.json?country=Testland&theme=middle-east")
-    assert 'filename="rwt_corpus_Testland_middle-east.json"' in r.headers["Content-Disposition"]
+    r = client.get("/export.json?country=Testland&theme=example")
+    assert 'filename="rwt_corpus_Testland_example.json"' in r.headers["Content-Disposition"]
     payload = json.loads(_text(r))
     assert payload["filter"]["keywords"]            # theme keywords recorded
-    assert payload["item_count"] == 1               # filtered to the ME item
+    assert payload["item_count"] == 1               # filtered to the energy item
 
 
 # --------------------------------------------------------------------------

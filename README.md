@@ -28,7 +28,7 @@ People who don't write code (businesses, freelancers, journalists, support organ
 - Respects robots.txt and terms of use (unfetchable sources fall back to manual paste)
 - Main-text extraction (ads/nav removed), language detection, **deduplication** (URL/body hash)
 - Attaches **provenance** to everything (source URL, fetch time, source, country, language, license note, hash)
-- **Theme filtering** (e.g. the Middle East) — a simple search that narrows collection to a theme (not classification)
+- **Theme filtering** — a simple search that narrows collection to a theme (not classification)
 - **Feed health check** (`verify`) and **static definition validation** (`validate`)
 - **Scheduled crawling** (periodic job) to automate routine monitoring
 - Local storage in **SQLite**, and export of the **raw corpus JSON**
@@ -93,7 +93,7 @@ For sources you can't fetch (robots-disallowed, paywalled, etc.), use **"paste b
 You have a sourced corpus. Here is what to do with it.
 
 - **Read on screen.** Use the country tabs and the theme filter to narrow the list. Each row shows the type, title, source, language and fetch time. Expand **"Full text" / "Summary"** to read, and click the source **"↗"** link to open the original article so you can verify and quote it with attribution.
-- **Focus on one story.** Pick a theme (or add your own keywords in `themes/*.yaml`) to zero in on a single shock — e.g. the Middle East, energy prices, supply chains — across all your sources and countries at once.
+- **Focus on one story.** Pick a theme (or add your own keywords in `themes/*.yaml`) to zero in on a single shock — e.g. energy prices, supply chains — across all your sources and countries at once.
 - **Take it into your own tools.** **"⬇ Export raw corpus JSON"** saves one file containing every item plus its **provenance** (source URL, fetch time, source name, country, language, license note, content hash). Open it in any JSON-aware tool, a spreadsheet, or your notes app to triage leads, build a timeline, or keep an audit trail of exactly where each fact came from. The provenance is the point: every item keeps its original link and fetch time, so your reporting stays verifiable and citable.
 - **Keep it fresh.** Schedule `run_scheduled.py` (see below) so new releases and articles arrive automatically. Re-collect with **"Fetch full article text"** to pull article bodies where the site allows it.
 - **Going deeper (optional).** Translation, classification, per-country analysis and draft generation are the separate **closed layer**. The open tool's job is to give you a clean, fully sourced corpus you can trust.
@@ -109,7 +109,7 @@ python cli.py sources                        # list sources
 python cli.py validate                       # statically validate definitions (offline, PR quality gate)
 python cli.py verify --country Japan          # connect to each feed and diagnose (helps fix URLs)
 python cli.py collect --country Japan         # collect all sources for Japan
-python cli.py collect --theme middle-east      # collect narrowed to the Middle East theme
+python cli.py collect --theme example          # collect narrowed to a theme (themes/*.yaml)
 python cli.py collect --source jp-meti --full # one source, fetch full article page (polite/slower)
 python cli.py list --country France
 python cli.py export corpus.json --country Japan
@@ -125,7 +125,7 @@ falls back to the summary and the reason is shown in the CLI output and the web 
 ### Scheduled crawling (periodic job)
 
 ```
-python run_scheduled.py --country Japan --theme middle-east
+python run_scheduled.py --country Japan --theme example
 ```
 
 - Linux/macOS (daily at 6am): `0 6 * * * cd /path/to/repo && python3 run_scheduled.py >> data/cron.out 2>&1`
@@ -159,8 +159,8 @@ Just edit `sources/*.yaml` (the community can extend it via PRs). For the format
 
 ## Themes (narrowing collection)
 
-Define multilingual keywords in `themes/*.yaml`. Bundled by default: `middle-east`.
-With `--theme middle-east` or the theme selector in the UI, only articles matching the keywords are collected.
+Define multilingual keywords in `themes/*.yaml`. Bundled by default: `example`.
+With `--theme example` or the theme selector in the UI, only articles matching the keywords are collected.
 Note: this is not a classification tag (closed side, section 4.4) but a simple text search on the collection side. Fine-grained classification is handled by the closed layer.
 
 ---
@@ -178,7 +178,7 @@ OpenBeat_Collector/
 ├─ sources/          # source registry (YAML, a community asset)
 │   └─ uk.yaml  france.yaml  japan.yaml
 ├─ themes/           # theme definitions (keywords for narrowing collection)
-│   └─ middle-east.yaml
+│   └─ example.yaml
 ├─ templates/index.html
 ├─ tests/sample_feed.xml
 ├─ data/             # SQLite & logs (auto-created on first run, gitignored)
