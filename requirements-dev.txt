@@ -1,0 +1,8 @@
+# Development- / CI-only dependencies (NOT required to run the toolkit itself).
+# The E2E / scenario tests reuse the runtime deps (Flask, feedparser, PyYAML),
+# so install both files together:
+#
+#   pip install -r requirements.txt -r requirements-dev.txt
+#   python -m pytest tests/
+#
+pytest>=7.0

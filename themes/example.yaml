@@ -1,0 +1,30 @@
+# Theme: Example (sample) — a generic, bundled starter theme.
+# Purpose: a simple en/ja text-match keyword set to demonstrate "narrow the
+#   collection to a theme". This is NOT classification (closed side, section 4.4),
+#   just a naive keyword filter on the collection side; some misses / over-collection
+#   are expected. Copy this file to make your own theme (themes/<id>.yaml).
+# Japanese keywords are kept on purpose so the filter also matches Japanese sources.
+id: example
+name: Example (sample theme)
+keywords:
+  - energy
+  - electricity
+  - fuel
+  - oil
+  - gas
+  - power
+  - renewable
+  - policy
+  - regulation
+  - tax
+  - price
+  - inflation
+  - エネルギー
+  - 電力
+  - 燃料
+  - 石油
+  - 価格
+  - 政策
+  - 規制
+  - 物価
+  - 再生可能エネルギー

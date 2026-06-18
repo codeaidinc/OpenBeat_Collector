@@ -1,0 +1,71 @@
+# OpenBeat Collector — Source Registry (United States)
+# fetch_method: rss | html | api | manual
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: United States
+language_default: en
+sources:
+  - id: us-trade-ita
+    name: International Trade Administration (trade.gov), U.S. Dept. of Commerce
+    source_type: ministry
+    url: https://www.trade.gov/rss.xml
+    site: https://www.trade.gov/
+    lang: en
+    fetch_method: rss
+    update_freq: weekly
+    license_note: "U.S. Government work, public domain"
+    trust: high
+
+  - id: us-ustr
+    name: Office of the U.S. Trade Representative (USTR) — Press Releases
+    source_type: government
+    url: https://ustr.gov/about-us/policy-offices/press-office/press-releases
+    site: https://ustr.gov/
+    lang: en
+    fetch_method: html
+    update_freq: daily
+    license_note: "U.S. Government work, public domain"
+    trust: high
+
+  - id: us-sba-newsroom
+    name: U.S. Small Business Administration (SBA) — Newsroom
+    source_type: support_org
+    url: https://www.sba.gov/articles?keyword=&article_type=137&langcode=en
+    site: https://www.sba.gov/about-sba/sba-newsroom
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "U.S. Government work, public domain"
+    trust: high
+
+  - id: us-fed-press
+    name: Federal Reserve Board — Press Releases (All)
+    source_type: government
+    url: https://www.federalreserve.gov/feeds/press_all.xml
+    site: https://www.federalreserve.gov/newsevents/pressreleases.htm
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "U.S. Government work, public domain"
+    trust: high
+
+  - id: us-bls-indicators
+    name: U.S. Bureau of Labor Statistics (BLS) — Latest Numbers
+    source_type: statistics
+    url: https://www.bls.gov/feed/bls_latest.rss
+    site: https://www.bls.gov/
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "U.S. Government work, public domain"
+    trust: high
+
+  - id: us-supplychaindive
+    name: Supply Chain Dive (Industry Dive)
+    source_type: sme_media
+    url: https://www.supplychaindive.com/feeds/news/
+    site: https://www.supplychaindive.com/
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Headline + summary + source link only; (c) Industry Dive"
+    trust: medium

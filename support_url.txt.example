@@ -1,0 +1,13 @@
+# OpenBeat Collector - source-request form URL.
+#
+# To use: copy this file to "support_url.txt" (same folder as the app / exe) and
+# put your form URL on a single line below. The "Open the request page" button
+# will open it. {site} / {detail} are auto-filled (URL-encoded) if your form
+# supports pre-fill (e.g. Google Forms / Tally hidden fields).
+#
+# Resolution order: OPENBEAT_SUPPORT_URL env var > support_url.txt > GitHub Issues.
+#
+# Examples:
+#   https://forms.gle/XXXXXXXX
+#   https://docs.google.com/forms/d/e/XXXX/viewform?usp=pp_url&entry.123456={site}
+#   https://tally.so/r/XXXXXX?site={site}

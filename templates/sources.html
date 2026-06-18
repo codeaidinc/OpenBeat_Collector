@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ t.manage_sources }} — {{ t.app_name }}</title>
+<style>
+  :root{ --card:#fff; --ink:#1e293b; --muted:#64748b; --line:#e2e8f0;
+         --accent:#2563eb; --accent2:#0ea5e9; --ok:#16a34a; --danger:#dc2626; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+       color:var(--ink);background:#f1f5f9;line-height:1.6}
+  header{background:linear-gradient(120deg,#0f172a,#1e3a8a);color:#fff;padding:20px 28px}
+  header h1{margin:0;font-size:19px}
+  header p{margin:4px 0 0;color:#cbd5e1;font-size:13px}
+  .wrap{max-width:1080px;margin:0 auto;padding:20px 20px 60px}
+  .flash{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;
+         padding:10px 14px;border-radius:8px;margin-bottom:14px;font-size:14px;white-space:pre-wrap}
+  .bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  a.back{color:var(--accent);text-decoration:none;font-size:14px}
+  .pill{font-size:12px;color:var(--muted)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+        padding:16px 18px;box-shadow:0 1px 2px rgba(0,0,0,.03);margin-bottom:16px}
+  .card h2{margin:0 0 12px;font-size:15px}
+  .easy{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 14px;margin-bottom:16px}
+  .easy label{font-weight:600;color:#1e3a8a;font-size:14px}
+  label{font-size:12px;color:var(--muted);display:block;margin-top:8px}
+  input[type=text],select,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);
+        border-radius:8px;font-size:14px;font-family:inherit;margin-top:3px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  button{background:var(--accent);color:#fff;border:0;padding:9px 16px;border-radius:8px;
+         font-size:14px;cursor:pointer;font-weight:600}
+  button.ghost{background:#fff;color:var(--accent);border:1px solid var(--accent)}
+  button.warn{background:#fff;color:var(--danger);border:1px solid var(--danger)}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:8px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12px}
+  td.u{max-width:280px;word-break:break-all;color:var(--muted);font-size:12px}
+  .ty{font-size:10px;padding:1px 6px;border-radius:8px;background:#eef2ff;color:#3730a3}
+  .actions form{display:inline}
+  .actions button{padding:5px 10px;font-size:12px;font-weight:500;margin-right:4px}
+  .note{font-size:12px;color:var(--muted)}
+  details summary{cursor:pointer;font-size:13px;color:var(--accent);margin-top:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>{{ t.manage_sources }}</h1>
+  <p>{{ t.manage_sources_note }}</p>
+</header>
+<div class="wrap">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}{% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}{% endif %}
+  {% endwith %}
+
+  <div class="bar">
+    <a class="back" href="{{ url_for('index') }}">{{ t.back_to_collect }}</a>
+    <span class="pill">{{ t.src_using_user if using_user else t.src_using_bundled }}</span>
+  </div>
+
+  {% set mlabels = {'rss':t.method_rss,'html':t.method_html,'manual':t.method_manual,'dataset':t.method_dataset,'api':t.method_api} %}
+
+  <div class="card">
+    <h2>{{ t.src_edit_title if edit_src else t.src_add_title }}</h2>
+
+    {% if not edit_src %}
+    <form method="post" action="{{ url_for('sources_discover') }}" class="easy">
+      <label>{{ t.src_easy_title }}</label>
+      <div class="note" style="margin:2px 0 8px">{{ t.src_easy_note }}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input type="text" name="page_url" placeholder="{{ t.src_easy_url_ph }}" style="flex:1;min-width:220px">
+        <button type="submit">🔎 {{ t.src_detect_btn }}</button>
+      </div>
+    </form>
+    {% endif %}
+
+    {% if not edit_src and disc and disc.status != 'rss' %}
+    <div class="easy" style="background:#fffbeb;border-color:#fde68a">
+      {% if disc.candidates %}
+      <label>{{ t.src_candidates_label }}</label>
+      <div class="note" style="margin:2px 0 8px">{{ t.src_candidates_note }}</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        {% for cu in disc.candidates %}
+        <form method="post" action="{{ url_for('sources_discover') }}" style="display:inline"><input type="hidden" name="page_url" value="{{ cu }}"><button class="ghost" type="submit" style="font-size:12px;padding:5px 8px">🔎 {{ cu }}</button></form>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div style="margin-top:10px">
+        <label>{{ t.src_request }}</label>
+        <div class="note" style="margin:2px 0 6px">{{ t.src_request_guide }}</div>
+        <textarea id="reqtext" readonly rows="5">{{ disc.request_text }}</textarea>
+        <div class="row" style="margin-top:6px">
+          <button class="ghost" type="button" id="copyreq">📋 {{ t.src_copy_btn }}</button>
+          <a href="{{ disc.support_url }}" target="_blank" rel="noopener"><button class="ghost" type="button">↗ {{ t.src_open_request_page }}</button></a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <form method="post" action="{{ url_for('sources_save') }}">
+      <input type="hidden" name="orig_id" value="{{ edit_src.id if edit_src else '' }}">
+      <div class="grid2">
+        <div><label>{{ t.f_id }}</label>
+          <input type="text" name="id" value="{{ edit_src.id if edit_src else '' }}" required></div>
+        <div><label>{{ t.f_name }}</label>
+          <input type="text" name="name" value="{{ edit_src.name if edit_src else '' }}" required></div>
+        <div><label>{{ t.f_country }}</label>
+          <input type="text" name="country" list="countrylist" value="{{ edit_src.country if edit_src else '' }}" required>
+          <datalist id="countrylist">{% for c in known_countries %}<option value="{{ c }}">{% endfor %}</datalist></div>
+        <div><label>{{ t.f_type }}</label>
+          <select name="source_type">{% for ty in valid_types %}<option value="{{ ty }}" {{ 'selected' if edit_src and edit_src.source_type==ty else '' }}>{{ ty }}</option>{% endfor %}</select></div>
+        <div><label>{{ t.f_method }}</label>
+          <select name="fetch_method">{% for m in valid_methods %}<option value="{{ m }}" {{ 'selected' if (edit_src and edit_src.fetch_method==m) or (not edit_src and disc and disc.method==m) else '' }}>{{ mlabels.get(m, m) }}</option>{% endfor %}</select></div>
+        <div><label>{{ t.f_lang }}</label>
+          <input type="text" name="lang" value="{{ edit_src.lang if edit_src else '' }}"></div>
+      </div>
+      <label>{{ t.f_url }}</label>
+      <input type="text" name="url" value="{{ edit_src.url if edit_src else (disc.url if disc else '') }}" placeholder="https://...">
+      <div class="grid2">
+        <div><label>{{ t.f_site }}</label>
+          <input type="text" name="site" value="{{ edit_src.site if edit_src else (disc.site if disc else '') }}"></div>
+        <div><label>{{ t.f_trust }}</label>
+          <select name="trust">{% for tr in valid_trust %}<option value="{{ tr }}" {{ 'selected' if edit_src and edit_src.trust==tr else '' }}>{{ tr }}</option>{% endfor %}</select></div>
+      </div>
+      <label>{{ t.f_license }}</label>
+      <input type="text" name="license_note" value="{{ edit_src.license_note if edit_src else '' }}">
+      <details {{ 'open' if edit_src and (edit_src.dataset_spec or edit_src.url_rewrite) else '' }}>
+        <summary>{{ t.src_advanced }}</summary>
+        <label>{{ t.f_freq }}</label>
+        <input type="text" name="update_freq" value="{{ edit_src.update_freq if edit_src else '' }}">
+        <label>{{ t.f_dataset }}</label>
+        <input type="text" name="dataset_spec" value="{{ edit_src.dataset_spec if edit_src else '' }}">
+        <label>{{ t.f_rewrite }}</label>
+        <input type="text" name="url_rewrite" value="{{ edit_src.url_rewrite if edit_src else '' }}">
+      </details>
+      <div class="row">
+        <button type="submit">{{ t.src_save }}</button>
+        {% if edit_src %}<a class="back" href="{{ url_for('sources_page') }}">{{ t.src_cancel }}</a>{% endif %}
+      </div>
+      <p class="note">{{ t.src_help }}</p>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>{{ sources|length }} {{ t.src_count }}</h2>
+    <table>
+      <thead><tr><th>{{ t.col_id }}</th><th>{{ t.col_title }}</th><th>{{ t.col_method }}</th><th>{{ t.col_url }}</th><th>{{ t.col_actions }}</th></tr></thead>
+      <tbody>
+      {% for s in sources %}
+        <tr>
+          <td><code>{{ s.id }}</code><div class="note">{{ s.country }}</div></td>
+          <td><b>{{ s.name }}</b> <span class="ty">{{ s.source_type }}</span></td>
+          <td>{{ mlabels.get(s.fetch_method, s.fetch_method) }}</td>
+          <td class="u">{{ s.url }}</td>
+          <td class="actions">
+            <form method="post" action="{{ url_for('sources_verify') }}"><input type="hidden" name="id" value="{{ s.id }}"><button class="ghost" type="submit">{{ t.src_test }}</button></form>
+            <a href="{{ url_for('sources_page', edit=s.id) }}"><button class="ghost" type="button">{{ t.src_edit }}</button></a>
+            <form method="post" action="{{ url_for('sources_delete') }}" onsubmit="return confirm('{{ t.src_delete_confirm }}');"><input type="hidden" name="id" value="{{ s.id }}"><button class="warn" type="submit">{{ t.src_delete }}</button></form>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <form method="post" action="{{ url_for('sources_reset') }}" onsubmit="return confirm('{{ t.src_reset_confirm }}');">
+    <button class="warn" type="submit">{{ t.src_reset_btn }}</button>
+  </form>
+</div>
+<script>
+(function(){var b=document.getElementById('copyreq');if(!b)return;b.addEventListener('click',function(){var t=document.getElementById('reqtext');if(!t)return;t.focus();t.select();t.setSelectionRange(0,99999);try{document.execCommand('copy');}catch(e){}if(navigator.clipboard){navigator.clipboard.writeText(t.value).catch(function(){});}b.textContent={{ ('✓ ' ~ t.src_copied) | tojson }};});})();
+</script>
+</body>
+</html>

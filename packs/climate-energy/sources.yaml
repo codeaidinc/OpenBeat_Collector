@@ -1,0 +1,73 @@
+# Source Registry — Climate & Energy pack
+# fetch_method: rss | html | api | manual | dataset
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: Japan
+language_default: ja
+sources:
+  - id: energy-jp-env
+    name: Ministry of the Environment (MOE) — Press
+    source_type: ministry
+    url: https://www.env.go.jp/press/index.html
+    site: https://www.env.go.jp/press/index.html
+    lang: ja
+    fetch_method: html
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. No press RSS; summary + source link only."
+    trust: high
+
+  - id: energy-jp-enecho
+    name: Agency for Natural Resources and Energy (ENECHO) — News Releases
+    source_type: ministry
+    url: https://www.enecho.meti.go.jp/notice/news_release/
+    site: https://www.enecho.meti.go.jp/notice/
+    lang: ja
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Japan Government Standard Terms of Use. Summary + source link only."
+    trust: high
+
+  - id: energy-jp-meti
+    name: METI — News Releases (energy / GX)
+    source_type: ministry
+    url: https://www.meti.go.jp/ml_index_release_atom.xml
+    site: https://www.meti.go.jp/press/
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. Energy/GX included."
+    trust: high
+
+  - id: energy-jp-jma
+    name: Japan Meteorological Agency (JMA) — Press releases
+    source_type: ministry
+    url: https://www.jma.go.jp/jma/press/
+    site: https://www.jma.go.jp/jma/press/
+    lang: ja
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Japan Government Standard Terms of Use. Summary + source link only."
+    trust: high
+
+  - id: energy-int-ipcc
+    name: IPCC (Intergovernmental Panel on Climate Change) — News
+    country: International
+    source_type: government
+    url: https://www.ipcc.ch/feed/
+    site: https://www.ipcc.ch/news/
+    lang: en
+    fetch_method: rss
+    update_freq: monthly
+    license_note: "International body. Summary + source link only."
+    trust: high
+
+  - id: energy-int-iea
+    name: IEA (International Energy Agency) — News
+    country: International
+    source_type: government
+    url: https://www.iea.org/news
+    site: https://www.iea.org/news
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "International body. No public RSS; summary + source link only."
+    trust: high

@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+data/
+*.sqlite
+*.sqlite-journal
+.venv/
+venv/
+*.json
+!sources/*.json
+!packs/*.json
+.DS_Store
+exports/
+verify_report.txt
+build/
+dist/
+*.spec.bak

@@ -1,0 +1,74 @@
+# Source Registry — Science & Technology pack
+# Same format as sources/japan.yaml. Per-source `country` overrides the default.
+# fetch_method: rss | html | api | manual | dataset
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: Japan
+language_default: ja
+sources:
+  - id: sci-jp-mext
+    name: MEXT (Ministry of Education, Culture, Sports, Science and Technology) — News
+    source_type: ministry
+    url: https://www.mext.go.jp/b_menu/news/index.rdf
+    site: https://www.mext.go.jp/b_menu/news/index.html
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. Summary + source link only."
+    trust: high
+
+  - id: sci-jp-meti
+    name: METI (Ministry of Economy, Trade and Industry) — News Releases
+    source_type: ministry
+    url: https://www.meti.go.jp/ml_index_release_atom.xml
+    site: https://www.meti.go.jp/press/
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. Tech/industry policy included."
+    trust: high
+
+  - id: sci-jp-jst
+    name: JST (Japan Science and Technology Agency) — Press Releases
+    source_type: support_org
+    url: https://www.jst.go.jp/pr/info/
+    site: https://www.jst.go.jp/pr/info/
+    lang: ja
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Within HTML-allowed bounds. Manual paste if unfetchable."
+    trust: high
+
+  - id: sci-int-nature
+    name: Nature — News
+    country: International
+    source_type: media
+    url: https://www.nature.com/nature.rss
+    site: https://www.nature.com/
+    lang: en
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Headline + summary + source link only. No full-text reproduction."
+    trust: high
+
+  - id: sci-int-science
+    name: Science / AAAS — News
+    country: International
+    source_type: media
+    url: https://www.science.org/news
+    site: https://www.science.org/news
+    lang: en
+    fetch_method: manual
+    update_freq: daily
+    license_note: "Strong bot protection; RSS often empty. Manual paste of summary + source link."
+    trust: high
+
+  - id: sci-jp-nhk-science
+    name: NHK News — Science & Culture
+    source_type: media
+    url: https://www.nhk.or.jp/rss/news/cat3.xml
+    site: https://www3.nhk.or.jp/news/
+    lang: ja
+    fetch_method: manual
+    update_freq: hourly
+    license_note: "RSS exists but may be blocked in some environments. Headline + summary + source link only."
+    trust: medium

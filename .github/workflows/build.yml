@@ -1,0 +1,82 @@
+name: Build installers (Windows / macOS)
+
+# Pushing a v* tag does a production build and attaches to the Release.
+# Manual runs (workflow_dispatch) only produce build artifacts.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed to create the Release and attach assets
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
+      - name: Build exe (PyInstaller)
+        run: pyinstaller --noconfirm installer/rwt.spec
+      - name: Compute version
+        id: ver
+        shell: pwsh
+        run: |
+          $tag = "${{ github.ref_name }}"
+          if ($tag -match '^v') { $ver = $tag.Substring(1) } else { $ver = '0.0.0' }
+          echo "ver=$ver" >> $env:GITHUB_OUTPUT
+      - name: Portable zip
+        shell: pwsh
+        run: Compress-Archive -Path dist/OpenBeat_Collector.exe -DestinationPath dist/OpenBeat_Collector-Windows-portable.zip -Force
+      - name: Build installer (Inno Setup)
+        shell: pwsh
+        run: |
+          choco install innosetup -y --no-progress
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" "/DMyAppVersion=${{ steps.ver.outputs.ver }}" installer\windows\rwt.iss
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: |
+            dist/OpenBeat_Collector-Windows-portable.zip
+            dist/OpenBeat_Collector-Setup-*.exe
+      - name: Attach to Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/OpenBeat_Collector-Windows-portable.zip
+            dist/OpenBeat_Collector-Setup-*.exe
+
+  build-macos:
+    runs-on: macos-latest   # Apple Silicon (arm64). For Intel, add a job on macos-13.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
+      - name: Build app (PyInstaller)
+        run: pyinstaller --noconfirm installer/rwt.spec
+      - name: Make DMG
+        run: |
+          hdiutil create -volname "OpenBeat Collector" \
+            -srcfolder "dist/OpenBeat_Collector.app" \
+            -ov -format UDZO "dist/OpenBeat_Collector-macOS.dmg"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-build
+          path: dist/OpenBeat_Collector-macOS.dmg
+      - name: Attach to Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/OpenBeat_Collector-macOS.dmg

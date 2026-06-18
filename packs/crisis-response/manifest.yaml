@@ -1,0 +1,30 @@
+# Beat Pack manifest — EMERGENCY (rapid-response) pack. See ../SCHEMA.md
+schema: rwt.pack
+spec_version: "1.0"
+id: crisis-response
+type: emergency            # beat | emergency  (distributed worldwide, fast, during a crisis)
+name: Global Crisis — Rapid Response
+name_ja: 世界危機・緊急対応
+domain_ja: 緊急対応（世界的危機の信頼ソース・専門家監修）
+description: >-
+  A rapid-response pack distributed worldwide when a global crisis hits, so
+  journalists anywhere can write from the same trustworthy, expert-reviewed
+  sources (WHO, UN/OCHA ReliefWeb, UN News, disaster alerts).
+description_ja: >-
+  世界的危機の発生時に世界同時配布する緊急パック。どこにいる記者も同じ信頼できる
+  監修済みソース（WHO・国連OCHA ReliefWeb・UN News・災害アラート等）から記事を起こせます。
+version: "1.0.0"
+languages: [ja, en]
+license: CC-BY-4.0
+trust_tier: federation-certified   # community | verified | federation-certified
+maintainer: "WFSJ / national association (curated) — replace with pack owner"
+created: "2026-06-12"
+updated: "2026-06-12"
+source_count: 5
+provides:
+  theme: theme.yaml
+  sources: sources.yaml
+  tags: null            # closed analysis dictionary lives in rwt-closed/packs/crisis-response
+notes: >-
+  Emergency packs are time-sensitive and sold at member / general prices. Feeds
+  verified as well-known global feeds; run `cli.py verify` after install.

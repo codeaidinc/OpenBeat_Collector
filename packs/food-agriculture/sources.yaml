@@ -1,0 +1,73 @@
+# Source Registry — Food & Agriculture pack
+# fetch_method: rss | html | api | manual | dataset
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: Japan
+language_default: ja
+sources:
+  - id: food-jp-maff
+    name: MAFF (Ministry of Agriculture, Forestry and Fisheries) — Press
+    source_type: ministry
+    url: https://www.maff.go.jp/j/press/index.html
+    site: https://www.maff.go.jp/j/press/index.html
+    lang: ja
+    fetch_method: html
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. Legacy RSS frozen (2016); use HTML list."
+    trust: high
+
+  - id: food-jp-fsc
+    name: Food Safety Commission of Japan (Cabinet Office)
+    source_type: government
+    url: https://www.fsc.go.jp/news.html
+    site: https://www.fsc.go.jp/
+    lang: ja
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Japan Government Standard Terms of Use. No RSS; summary + source link only."
+    trust: high
+
+  - id: food-jp-caa
+    name: Consumer Affairs Agency (CAA) — News (food labeling / recall)
+    source_type: government
+    url: https://www.caa.go.jp/news.rss
+    site: https://www.caa.go.jp/notice/archive/
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. Summary + source link only."
+    trust: high
+
+  - id: food-jp-mhlw
+    name: MHLW (Ministry of Health, Labour and Welfare) — News (food hygiene incl.)
+    source_type: ministry
+    url: https://www.mhlw.go.jp/stf/news.rdf
+    site: https://www.mhlw.go.jp/stf/houdou/index.html
+    lang: ja
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Japan Government Standard Terms of Use. Mixed feed (food hygiene included)."
+    trust: high
+
+  - id: food-int-fao
+    name: FAO (Food and Agriculture Organization) — Newsroom
+    country: International
+    source_type: government
+    url: https://www.fao.org/feeds/fao-newsroom-rss
+    site: https://www.fao.org/newsroom/en/
+    lang: en
+    fetch_method: rss
+    update_freq: weekly
+    license_note: "UN agency. Summary + source link only. Feed may lag the HTML newsroom."
+    trust: high
+
+  - id: food-int-codex
+    name: Codex Alimentarius (FAO/WHO) — News
+    country: International
+    source_type: government
+    url: https://www.fao.org/fao-who-codexalimentarius/news-and-events/news/en/
+    site: https://www.fao.org/fao-who-codexalimentarius/
+    lang: en
+    fetch_method: html
+    update_freq: monthly
+    license_note: "International food standards body. Summary + source link only."
+    trust: high

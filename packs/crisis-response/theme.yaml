@@ -1,0 +1,45 @@
+# Theme: Global Crisis / Rapid Response (collection-side keyword filter)
+id: crisis-response
+name: Global Crisis — Rapid Response
+keywords:
+  # English
+  - crisis
+  - emergency
+  - disaster
+  - outbreak
+  - epidemic
+  - pandemic
+  - conflict
+  - war
+  - earthquake
+  - flood
+  - drought
+  - famine
+  - displacement
+  - refugee
+  - evacuation
+  - humanitarian
+  - relief
+  - sanctions
+  - cyberattack
+  - supply disruption
+  # 日本語
+  - 危機
+  - 緊急
+  - 災害
+  - 感染症
+  - 流行
+  - パンデミック
+  - 紛争
+  - 戦争
+  - 地震
+  - 洪水
+  - 干ばつ
+  - 飢饉
+  - 避難
+  - 難民
+  - 人道
+  - 支援
+  - 制裁
+  - サイバー攻撃
+  - 供給途絶

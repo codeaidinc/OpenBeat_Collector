@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ it.title or t.sample_article }} — {{ t.sample_title_suffix }}</title>
+<style>
+  body{margin:0;font-family:system-ui,"Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+       color:#1e293b;background:#f1f5f9;line-height:1.7}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 20px 60px}
+  .banner{background:#fef9c3;border:1px solid #fde68a;color:#854d0e;
+          padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:18px}
+  .card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:22px}
+  h1{font-size:20px;margin:0 0 8px}
+  .meta{font-size:12px;color:#64748b;margin-bottom:14px}
+  .ty{font-size:10px;padding:1px 6px;border-radius:8px;background:#eef2ff;color:#3730a3}
+  .body{white-space:pre-wrap;color:#334155;font-size:15px}
+  a.back{display:inline-block;margin-top:18px;color:#2563eb;text-decoration:none;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="banner">{{ t.sample_banner }}</div>
+  <div class="card">
+    <h1>{{ it.title or t.untitled }}</h1>
+    <div class="meta">
+      <span class="ty">{{ it.source_type }}</span>
+      · {{ t.src_word }}: {{ it.source_name }} · {{ t.lang_word }}: {{ it.lang }} · {{ t.fetched_word }}: {{ it.fetched_at }}
+    </div>
+    <div class="body">{{ it.body_raw or it.summary_excerpt or t.no_body_sample }}</div>
+  </div>
+  <a class="back" href="{{ url_for('index') }}">{{ t.back_list }}</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sample Gov Feed</title>
+  <updated>2026-06-09T10:00:00Z</updated>
+  <id>urn:rwt:test:sample</id>
+  <entry>
+    <title>SME energy support scheme extended for six months</title>
+    <link href="https://example.gov.test/news/energy-support-extended"/>
+    <id>urn:rwt:test:1</id>
+    <updated>2026-06-09T09:00:00Z</updated>
+    <summary>The government announced an extension of the energy bill relief scheme for small and medium-sized enterprises facing higher input costs amid global supply disruption.</summary>
+  </entry>
+  <entry>
+    <title>New guidance on supply-chain diversification for manufacturers</title>
+    <link href="https://example.gov.test/news/supply-chain-guidance"/>
+    <id>urn:rwt:test:2</id>
+    <updated>2026-06-08T14:30:00Z</updated>
+    <summary>Practical guidance to help small manufacturers reduce dependence on single-source imports and build inventory buffers.</summary>
+  </entry>
+  <entry>
+    <title>Quarterly statistics: SME export volumes Q1 2026</title>
+    <link href="https://example.gov.test/stats/sme-exports-q1-2026"/>
+    <id>urn:rwt:test:3</id>
+    <updated>2026-06-05T08:00:00Z</updated>
+    <summary>Release of first-quarter export figures for the small business sector, with regional breakdowns.</summary>
+  </entry>
+</feed>

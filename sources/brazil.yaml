@@ -1,0 +1,49 @@
+# OpenBeat Collector — Source Registry (Brazil)
+# fetch_method: rss | html | api | manual
+# source_type: government | ministry | media | sme_media | support_org | statistics
+country: Brazil
+language_default: en
+sources:
+  - id: br-planalto-news
+    name: Presidency of the Republic — Latest News (Palacio do Planalto)
+    source_type: government
+    url: https://www.gov.br/planalto/en/latest-news
+    site: https://www.gov.br/planalto/en
+    lang: en
+    fetch_method: html
+    update_freq: daily
+    license_note: "Gov.br content, CC BY-ND 3.0 (attribution, no derivatives)"
+    trust: high
+
+  - id: br-agenciabrasil-economy
+    name: Agencia Brasil — Economy (English, EBC public news agency)
+    source_type: media
+    url: https://agenciabrasil.ebc.com.br/en/economia
+    site: https://agenciabrasil.ebc.com.br/en
+    lang: en
+    fetch_method: html
+    update_freq: daily
+    license_note: "Public broadcaster (EBC); summary + source link; check EBC terms"
+    trust: high
+
+  - id: br-agenciabrasil-economy-rss
+    name: Agencia Brasil — Economia (RSS, Portuguese)
+    source_type: media
+    url: http://agenciabrasil.ebc.com.br/rss/economia/feed.xml
+    site: https://agenciabrasil.ebc.com.br
+    lang: pt
+    fetch_method: rss
+    update_freq: daily
+    license_note: "Public broadcaster (EBC); summary + source link; check EBC terms"
+    trust: high
+
+  - id: br-bcb
+    name: Banco Central do Brasil (Central Bank of Brazil) — News (English)
+    source_type: government
+    url: https://www.bcb.gov.br/en/about/rssen
+    site: https://www.bcb.gov.br/en
+    lang: en
+    fetch_method: html
+    update_freq: weekly
+    license_note: "Public-sector information; standard government reuse"
+    trust: high

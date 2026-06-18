@@ -1,0 +1,28 @@
+# Beat Pack manifest — see ../SCHEMA.md
+schema: rwt.pack
+spec_version: "1.0"
+id: health-publichealth
+name: Health & Public Health
+name_ja: 医療・公衆衛生
+domain: 医療・公衆衛生ジャーナリズム（health / public health / infectious disease）
+description: >-
+  Routine monitoring for health journalists: health ministry releases,
+  infectious-disease surveillance, drug/device safety, and WHO.
+description_ja: >-
+  医療・公衆衛生ジャーナリスト向けの定点観測パック。厚生労働行政、感染症サーベイランス、
+  医薬品・医療機器の安全性情報、WHO の公開情報を出典付きで収集します。
+version: "1.0.0"
+languages: [ja, en]
+license: CC-BY-4.0
+trust_tier: verified
+maintainer: "JASTJ pilot (curated) — replace with pack owner"
+created: "2026-06-12"
+updated: "2026-06-12"
+source_count: 6
+provides:
+  theme: theme.yaml
+  sources: sources.yaml
+  tags: null
+notes: >-
+  Feeds verified 2026-06. NIID was reorganized into JIHS (id-info.jihs.go.jp);
+  old niid.go.jp links are deprecated. Re-run `cli.py verify` after install.
